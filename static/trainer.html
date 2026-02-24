@@ -1,0 +1,173 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Тренажёр — code-checker1</title>
+
+  <link rel="stylesheet" href="/assets/styles.css">
+</head>
+
+<body>
+  <div class="topbar">
+    <div class="topbar-inner">
+      <div class="leftHead">
+        <a class="back" href="/app.html" id="backLink">
+          <span style="font-size:18px;line-height:1;">←</span>
+          <span>Назад</span>
+        </a>
+
+        <div class="titleWrap">
+          <div class="titleRow">
+            <h1 class="title" id="titleH">Тренажёр</h1>
+            <span class="badge ok" id="saveBadge">сохранено</span>
+          </div>
+          <div class="muted" id="subInfo"></div>
+        </div>
+      </div>
+
+      <div class="rightHead">
+        <span class="userTag" id="who">—</span>
+        <button class="btnSoft" id="exportBtn">Экспорт</button>
+        <button class="btnSoft" id="logoutBtn">Выйти</button>
+      </div>
+    </div>
+
+    <!-- ВОТ ЭТИ ТАБЫ ВЕРХУ СЛЕВА — КАК БЫЛО -->
+    <div class="tabsRow">
+      <div class="tabPill active" id="pill-unit">Unit tests</div>
+      <div class="tabPill" id="pill-templates">Шаблоны решений</div>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="grid">
+
+      <!-- LEFT MAIN -->
+      <div class="card" id="leftMain">
+        <div class="cardPad">
+          <div class="sectionTitle">Задание</div>
+          <div class="muted">Автосохранение включено.</div>
+          <textarea id="taskText" class="light" style="min-height:120px;margin-top:8px;"></textarea>
+
+          <div class="row2" style="margin-top:12px;">
+            <div>
+              <div class="sectionTitle">Решение</div>
+              <textarea id="studentCode" style="min-height:220px;"></textarea>
+            </div>
+
+            <div>
+              <div class="sectionTitle">Эталонный ввод (каждое значение на отдельной строке)</div>
+              <div class="muted">Пока это поле просто хранится.</div>
+              <textarea id="referenceInput" class="light" style="min-height:120px;margin-top:8px;"></textarea>
+
+              <div style="margin-top:12px; display:flex; gap:10px;">
+                <button class="btn" id="checkBtn">Проверить</button>
+
+                <!-- БЫЛО saveBtn, СТАЛО genBtn — и текст "Сгенерировать" -->
+                <button class="btnGhost" id="genBtn">Сгенерировать</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="resultBox" style="margin-top:12px;">
+            <div class="sectionTitle" style="margin-bottom:6px;">Результат Unit testа</div>
+            <div id="statusText" class="muted"></div>
+
+            <ul id="checks" class="checks"></ul>
+
+            <div style="margin-top:10px;">
+              <div class="muted" style="font-weight:900;margin-bottom:6px;">stdout</div>
+              <div id="stdout" class="miniCode">—</div>
+            </div>
+
+            <div style="margin-top:10px;">
+              <div class="muted" style="font-weight:900;margin-bottom:6px;">message/stderr</div>
+              <div id="stderr" class="miniCode">—</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- RIGHT PANEL -->
+      <div class="card" id="rightPanel">
+        <!-- unit -->
+        <div id="unitView" class="cardPad">
+          <div style="display:flex;align-items:center;justify-content:space-between;gap:10px;">
+            <div>
+              <div class="sectionTitle" style="margin-bottom:4px;">Unit тесты</div>
+              <div class="muted">Пиши JS unit tests (`await tester.run()`, `tester.print(...)`).</div>
+            </div>
+
+            <!-- settings button -->
+            <button class="btnSoft" id="settingsBtn" title="Настройки (Эталон Python)">⚙</button>
+          </div>
+
+          <textarea id="testJs" style="min-height:820px;margin-top:10px;"></textarea>
+        </div>
+
+        <!-- templates -->
+        <div id="templatesView" style="display:none;">
+          <div class="tplPage">
+            <div class="tplSidebar">
+              <div class="tplSideHead">
+                <div class="tplSideTitle">Шаблоны</div>
+                <div class="muted" style="font-weight:900;">≡</div>
+              </div>
+
+              <div class="tplList" id="tplList"></div>
+
+              <div class="tplSideFooter">
+                <button class="btnSoft" id="addTplBtn">+ Добавить</button>
+                <button class="btnSoft" id="copyTplBtn">Копировать в "Код ученика"</button>
+              </div>
+            </div>
+
+            <div class="tplEditorCard">
+              <div class="tplEditorHead">
+                <div class="tplEditorTitle">
+                  <h3 id="tplHeader">Решение —</h3>
+                  <span class="badge ok" id="tplSaveBadge">сохранено</span>
+                </div>
+                <button class="btnSoft" id="historyBtn">История изменений</button>
+              </div>
+
+              <div class="cardPad">
+                <textarea id="tplCode" style="min-height:600px;"></textarea>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+
+  <!-- modal for referencePy -->
+  <div id="settingsModal" class="modalOverlay" style="display:none;">
+    <div class="modalCard">
+      <div class="modalHead">
+        <div>
+          <div class="sectionTitle" style="margin:0;">Настройки</div>
+          <div class="muted">Эталонный Python-код для <b>tester.runReference()</b>.</div>
+        </div>
+        <button class="btnSoft" id="closeSettingsBtn">✕</button>
+      </div>
+
+      <div class="modalBody">
+        <div class="sectionTitle" style="margin-top:0;">Эталон (Python)</div>
+        <div class="muted">Этот код не виден в основном интерфейсе. Он нужен только для сравнения с решением.</div>
+        <textarea id="referencePy" style="min-height:320px;margin-top:10px;"></textarea>
+
+        <div style="display:flex;gap:10px;justify-content:flex-end;margin-top:12px;">
+          <button class="btnGhost" id="saveSettingsBtn">Сохранить</button>
+          <button class="btn" id="closeSettingsBtn2">Готово</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script type="module" src="/assets/trainer.js"></script>
+</body>
+</html>

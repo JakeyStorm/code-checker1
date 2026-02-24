@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Мои тренажёры</title>
+  <link rel="stylesheet" href="/assets/styles.css">
+</head>
+<body>
+  <div class="topbar">
+    <div class="topbar-inner">
+      <div class="leftHead">
+        <h1 class="title" style="margin:0;">Мои тренажёры</h1>
+        <span class="muted" id="userLabel" style="margin-left:10px;">—</span>
+      </div>
+
+      <div class="rightHead">
+        <button class="btnSoft" id="reloadBtn" title="Обновить">⟳</button>
+        <button class="btnSoft" id="logoutBtn">Выйти</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="card">
+      <div class="cardPad">
+        <div style="display:flex; gap:10px; align-items:center;">
+          <input id="titleInput" class="light" style="flex:1;"
+                 placeholder="Название тренажёра (например: ТЕСТ 1)" />
+          <button class="btn" id="createBtn">Создать</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="card" style="margin-top:12px;">
+      <div class="cardPad">
+        <div class="sectionTitle">Список</div>
+        <div id="list" class="list" style="margin-top:10px;"></div>
+        <div id="empty" class="muted" style="display:none;margin-top:8px;">Пока нет тренажёров.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ВАЖНО: module -->
+  <script type="module" src="/assets/app.js"></script>
+</body>
+</html>

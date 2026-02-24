@@ -1,0 +1,31 @@
+{
+  "id": "mlso3uc5b8679d45",
+  "title": "тест 1",
+  "testJs": "await tester.run();\n\nconst cases = [\n  { name: \"ТЕСТ 1\", input: [6, 14, 10, 0], expected: 0},\n  { name: \"ТЕСТ 2\", input: [16, 0], expected: 16},\n  { name: \"ТЕСТ 3\", input: [56, 86, 96, 0], expected: 152},\n  { name: \"ТЕСТ 4\", input: [106, 216, 0], expected: 216}, \n];\n\nfunction lastIntNum(str) {\n  const nums = String(str ?? \"\").match(/-?\\d+/g) || [];\n  if (!nums.length) return null;\n  const v = Number(nums[nums.length - 1]);\n  return Number.isFinite(v) ? v : null;\n}\n\ntester.clearComments();\n\nconst hasWhile = tester.isMatchCode(/\\bwhile\\b/);\ntester.print(\"Есть while\", hasWhile); // без баллов, чисто инфо\n\nlet allOk = true;\n\nfor (const tc of cases) {\n  const stu = await tester.run(tc.input);\n\n  const okNoErr = !stu.error;\n  const got = lastIntNum(stu.result);\n\n  const okEq = okNoErr && got !== null && got === tc.expected;\n\n  tester.print(`${tc.name}: правильный ответ`, okEq, tc.score);\n\n  allOk = allOk && okEq;\n}\n\ntester.print(\"Итог: все тесты пройдены\", allOk);\nreturn;\n",
+  "referencePy": "s = 0\na = int(input())\nwhile a != 0:\n    if (a % 8 == 0) and (a % 10 == 6):\n         s += a\n    a = int(input())\nprint(s)\n\n",
+  "templates": [
+    {
+      "name": "Решер",
+      "code": "s = 0\na = int(input())\nwhile a != 0:\n    if (a % 8 == 0) and (a % 10 == 6):\n         s += a\n    a = int(input())\nprint(s)\n\n"
+    },
+    {
+      "name": "Решение 2",
+      "code": "s = 0\na = int(input())\nwhile a != 0:\n    if (a % 8 == 0) and (a % 10 == 6):\n         s += a\n    a = int(input())\nprint(s)\n\n"
+    },
+    {
+      "name": "Решение 3",
+      "code": ""
+    },
+    {
+      "name": "Решение 4",
+      "code": ""
+    },
+    {
+      "name": "Решение 5",
+      "code": "тмиитмитмитити\nолоиоори"
+    }
+  ],
+  "updatedAt": 1771541923656,
+  "taskText": "Напишите программу, которая в последовательности натуральных чисел находит сумму всех чисел, которые делятся на 8 и оканчиваются на 6. Программа получает на вход натуральные числа, количество введенных чисел неизвестно. Последовательность заканчивается числом 0 (0 - признак окончания ввода, в последовательность не входит). Количество чисел не превышает 1200. Введенные числа не превышают 40000. Программа должна вывести одно число: искомую сумму.",
+  "referenceInput": ""
+}

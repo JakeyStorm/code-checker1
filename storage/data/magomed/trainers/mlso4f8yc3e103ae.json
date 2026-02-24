@@ -1,0 +1,8 @@
+{
+  "id": "mlso4f8yc3e103ae",
+  "title": "тест 2",
+  "testJs": "tester.print(\"Unit-test подключён\", true);\nreturn;",
+  "referencePy": "print(0)",
+  "templates": [],
+  "updatedAt": 1771527237025
+}

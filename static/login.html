@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8"/>
+  <title>Login — code-checker1</title>
+  <style>
+    body{font-family:Arial;margin:40px;max-width:420px}
+    input{width:100%;padding:10px;margin:8px 0;font-size:16px}
+    button{padding:10px 14px;font-size:16px;cursor:pointer}
+    .err{color:#b00020;margin-top:10px}
+  </style>
+</head>
+<body>
+  <h2>Вход</h2>
+
+  <label>Логин</label>
+  <input id="u" placeholder="magomed или abubakar">
+
+  <label>Пароль</label>
+  <input id="p" type="password" placeholder="1234">
+
+  <button onclick="login()">Войти</button>
+  <div id="err" class="err"></div>
+
+<script>
+async function login(){
+  const username = document.getElementById("u").value.trim();
+  const password = document.getElementById("p").value;
+
+  const r = await fetch("/api/login", {
+    method:"POST",
+    headers: {"Content-Type":"application/json"},
+    body: JSON.stringify({username, password})
+  });
+
+  if (!r.ok) {
+    document.getElementById("err").textContent = "Неверный логин или пароль";
+    return;
+  }
+
+  location.href = "/app";
+}
+</script>
+</body>
+</html>

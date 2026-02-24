@@ -1,0 +1,8 @@
+{
+  "id": "mlttl0919e0b5a00",
+  "title": "Новый тренажёр",
+  "testJs": "tester.print(\"Unit-test подключён\", true);\nreturn;",
+  "referencePy": "print(0)",
+  "templates": [],
+  "updatedAt": 1771527268661
+}

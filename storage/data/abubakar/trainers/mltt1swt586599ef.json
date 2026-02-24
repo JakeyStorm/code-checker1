@@ -1,0 +1,39 @@
+{
+  "id": "mltt1swt586599ef",
+  "title": "Чапалах",
+  "testJs": "tester.print(\"Unit-test подключён\", true);\nreturn;фцувафывафыва",
+  "referencePy": "print(0)",
+  "templates": [
+    {
+      "name": "Решение 1",
+      "code": ""
+    },
+    {
+      "name": "Решение 2",
+      "code": ""
+    },
+    {
+      "name": "Решение 3",
+      "code": ""
+    },
+    {
+      "name": "Решение 6",
+      "code": ""
+    },
+    {
+      "name": "Решение 7",
+      "code": ""
+    },
+    {
+      "name": "Решение 8",
+      "code": ""
+    },
+    {
+      "name": "Решение 9",
+      "code": "кнгшкнгш"
+    }
+  ],
+  "updatedAt": 1771526460672,
+  "taskText": "",
+  "referenceInput": ""
+}
