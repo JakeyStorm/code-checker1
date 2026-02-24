@@ -1,12 +1,15 @@
 {
   "name": "code-checker1",
   "version": "1.0.0",
-  "type": "module",
+  "description": "Code trainer platform",
   "main": "server.js",
   "scripts": {
     "start": "node server.js"
   },
   "dependencies": {
-    "express": "^4.19.2"
+    "cookie-parser": "^1.4.7",
+    "dotenv": "^17.3.1",
+    "express": "^4.22.1",
+    "openai": "^6.22.0"
   }
 }
